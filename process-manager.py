@@ -95,8 +95,8 @@ if __name__ == "__main__":
             get_top_mem_processes()
         elif choice == "3.": 
             pid = input("Enter the PID: ").strip()
-        if pid.isdigit():
-            get_process_info(int(pid))
+            if pid.isdigit():
+                get_process_info(int(pid))
         elif choice == "4.":
             name_or_pid = input("Enter the name or PID of the Process:").strip()
             if name_or_pid.isdigit():
@@ -120,7 +120,7 @@ if __name__ == "__main__":
                 monitor_process(pid=(name_or_pid), interval=interval)
             else:
                 monitor_process(name=(name_or_pid), interval=interval)
-        elif choice == '7':
+        elif choice == '7.':
             break
         else: 
             print("Invalid choice. Please try again.")
