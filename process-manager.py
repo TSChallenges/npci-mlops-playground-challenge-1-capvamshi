@@ -86,7 +86,7 @@ if __name__ == "__main__":
         print('5. Kill Process')
         print('6. Monitor Process')
         print('7. Exit')
-        choice = input("Enter your choice:").strip()
+        choice = input("Enter your choice:")
         print(f"Your choice: '{choice}'") # Debug print to check the input
         
         if choice == "1.":
@@ -94,33 +94,36 @@ if __name__ == "__main__":
         elif choice == "2.":
             get_top_mem_processes()
         elif choice == "3.": 
-            pid = input("Enter the PID: ").strip()
+            pid = input("Enter the PID: ")
             if pid.isdigit():
                 get_process_info(int(pid))
         elif choice == "4.":
-            name_or_pid = input("Enter the name or PID of the Process:").strip()
+            name_or_pid = input("Enter the name or PID of the Process:")
             if name_or_pid.isdigit():
                 search_process(pid=(name_or_pid))
             else:
                 search_process(name=(name_or_pid))
         elif choice == "5.":
-            name_or_pid = input("Enter the name or PID of the Process:").strip()
+            name_or_pid = input("Enter the name or PID of the Process:")
             if name_or_pid.isdigit():
                 kill_process(pid=(name_or_pid))
             else:
                 kill_process(name=(name_or_pid))
             kill_process()
         elif choice == "6.":
-           name_or_pid = input("Enter process name or PID: ").strip() 
-           interval = input("Enter the monitoring interval in seconds: ").strip() 
-           if name_or_pid.isdigit(): 
-            if interval.isdigit(): 
-                monitor_process(pid=int(name_or_pid), interval=int(interval))
+            name_or_pid = input("Enter process name or PID: ")
+            interval = input("Enter the monitoring interval in seconds: ")
             if name_or_pid.isdigit():
-                monitor_process(pid=(name_or_pid), interval=interval)
+                if interval.isdigit():
+                    monitor_process(pid=int(name_or_pid), interval=int(interval))
+                else:
+                    print("Invalid interval. Please enter a numeric value.")
             else:
-                monitor_process(name=(name_or_pid), interval=interval)
-        elif choice == '7.':
+                if interval.isdigit():
+                    monitor_process(name=name_or_pid, interval=int(interval))
+                else:
+                    print("Invalid interval. Please enter a numeric value.")
+        elif choice == "7.":
             break
-        else: 
+        else:
             print("Invalid choice. Please try again.")
